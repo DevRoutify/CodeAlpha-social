@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { getStore } = require("@netlify/blobs");
+const { connectLambda, getStore } = require("@netlify/blobs");
 const serverless = require("serverless-http");
 const { app, getDatabaseSnapshot, initializeDatabase } = require("../../server");
 
@@ -8,7 +8,7 @@ const localDevelopment = process.env.NETLIFY_LOCAL === "true";
 const databasePath = localDevelopment
   ? path.join(__dirname, "..", "..", "data", "netlify-dev.db")
   : path.join("/tmp", "gather-social", "social.db");
-const store = localDevelopment ? null : getStore("gather-social-database");
+let store;
 const runExpress = serverless(app);
 let initialization;
 
@@ -27,6 +27,10 @@ async function initializeFromBlob() {
 }
 
 exports.handler = async (event, context) => {
+  if (!localDevelopment) {
+    connectLambda(event);
+    store ||= getStore("gather-social-database");
+  }
   initialization ||= initializeFromBlob();
   await initialization;
 
