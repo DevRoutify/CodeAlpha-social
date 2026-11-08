@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7f4">
+    <title>Gather — a little more social</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Gather home"><span class="brand-mark">g.</span><span>gather</span></a>
+        <label class="account-switcher">
+          <span class="switcher-label">You’re browsing as</span>
+          <select id="user-select" aria-label="Choose demo profile"></select>
+          <span class="select-chevron">⌄</span>
+        </label>
+      </header>
+
+      <main class="layout">
+        <aside class="left-column">
+          <section class="welcome-card">
+            <div class="welcome-art" aria-hidden="true"><span>✳</span><i></i><b></b></div>
+            <p class="eyebrow">A GOOD PLACE TO BE</p>
+            <h1>Small moments.<br>Better together.</h1>
+            <p class="welcome-copy">A cozy corner of the internet for the things worth sharing.</p>
+          </section>
+          <section class="people-card">
+            <div class="section-heading"><h2>People to know</h2><span class="spark">✳</span></div>
+            <div id="people-list" class="people-list"></div>
+          </section>
+          <p class="sidebar-note">Made for sharing the everyday.<br><span>© 2025 Gather Social</span></p>
+        </aside>
+
+        <section class="feed-column">
+          <div class="feed-heading">
+            <div><p class="eyebrow">YOUR LITTLE CORNER</p><h2>Home feed <span>✳</span></h2></div>
+            <div class="feed-dot" aria-hidden="true"></div>
+          </div>
+          <form id="composer" class="composer card">
+            <div class="composer-top">
+              <div id="composer-avatar" class="avatar avatar-large">M</div>
+              <label class="composer-label" for="post-content">What’s on your mind?</label>
+            </div>
+            <textarea id="post-content" maxlength="500" placeholder="Share a thought, a moment, a little win…" required></textarea>
+            <div class="composer-bottom">
+              <span class="composer-hint">Keep it kind. Keep it you.</span>
+              <button class="button button-primary" type="submit">Share a moment <span>↗</span></button>
+            </div>
+          </form>
+          <div id="notice" class="notice" role="status" aria-live="polite"></div>
+          <div id="feed" class="feed-list" aria-live="polite"></div>
+        </section>
+
+        <aside class="right-column">
+          <section id="profile-card" class="profile-card card"></section>
+          <section class="prompt-card">
+            <div class="prompt-icon">✿</div>
+            <p class="eyebrow">A LITTLE PROMPT</p>
+            <h2>Good things grow when they’re shared.</h2>
+            <p>Leave someone a kind comment today.</p>
+            <span class="prompt-decoration">✳</span>
+          </section>
+        </aside>
+      </main>
+      <footer class="mobile-footer">Gather · a little more social</footer>
+    </div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
